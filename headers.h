@@ -39,18 +39,18 @@ class framebuffer {
 };
 
 class polygon {
-     private:
-	std::vector<int> points;	
-	int poros[2];
-     public:    
+  private:
+    int poros[2]={683,384};
+  public:    
+    std::vector<int> points;	
 	polygon(std::vector<int> _points);
     void draw_fill(framebuffer f, int x, int y, int red, int green, int blue);
-    int *get_color(framebuffer f, int x, int y);
+    void get_color(int* color,framebuffer f, int x, int y);
 	void block(framebuffer f, int startX, int startY, int height, int width, int red, int green, int blue);
 	void line(framebuffer f, int x0, int y0, int x1, int y1);
-	void *draw(framebuffer f, int scale);
+	void *draw(framebuffer f,bool mode);
 	void translation(int x, int y);
-	void rotation(float alpha);
+    void rotate(int degree);
 	void clip(framebuffer f, int xmin, int ymin, int xmax, int ymax);
 };
 #endif
